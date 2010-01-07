@@ -1,0 +1,29 @@
+<div id="feature" class="column span-15 colborder">
+	
+	<% if !@posts.blank? %>		  
+	    <%=render :partial=>'shared/post', :collection=>@posts %>	  
+	<% else %>
+	<% end %>
+</div>
+
+
+<div id="sidebar"  id="sidebar" class="column span-7">
+    <div id="home_right" class="column">
+        <div id="adzerk" class="column">
+            <div id="adzerk_ad_div" class="column">
+                <script type="text/javascript" src="http://engine.theloungenet.com/Server/DOTNET/RCONERY/VERT"></script>
+            </div>
+            <p id="adzerk_by">
+                <a href='http://theloungenet.com'>Ads by The Lounge</a>
+            </p>
+        </div>
+        <div class="column" style="text-align:left">  		
+           <%=image_tag("categories.png")%>
+            <ul>
+			  <% for cat in @categories %>
+			    <li><%= link_to cat.name, :action => "index", :controller=>"post", :slug=>cat.slug %></li>
+			  <% end %>
+			</ul>
+		</div>
+	</div>
+</div>

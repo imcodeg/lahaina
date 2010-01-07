@@ -1,0 +1,20 @@
+<div class="column span-7 <%if @is_last%>last <%else%>colborder<%end%>">
+   <div class="five_posts">
+
+	 <%if(!@category.posts.blank?)%>			
+	    <%first = @category.posts.first%>
+		<%if(first)%>
+		    <%=image_tag("#{@category.name}.png")%>	    
+		    <h6><a href="<%=first.url%>" rel="bookmark" title="Permalink to <%=first.title %>"><%=first.title %></a></h6> 
+		    <p class="byline"><%=first.pretty_date%> | <a href="<%=first.url%>/#comments" title="Comment on <%=first.title %>">Discuss</a></p>
+		    <p><%=first.excerpt%></p> 
+		    <h6><a href="/category/<%=@category.slug%>">More <%=@category.name%></a></h6> 
+		    <ul>
+		   <%@category.posts.each do | p | %>
+		        <li><a href="<%=p.url%>" rel="bookmark" title="Permanent Link to <%=p.title %>" class="title"><%=p.title %></a></li> 
+		    <%end%> 
+		<%end%>
+	    </ul>				
+	 <% end %>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+﻿<rsd version="1.0" xmlns="http://archipelago.phrasewise.com/rsd">
+    <service>
+        <engineName>Hana</engineName>
+        <engineLink>http://github.com/robconery/hana.git</engineLink>
+        <homePageLink>http://blog.wekeroad.com/</homePageLink>
+        <apis>
+            <api name="Wordpress" preferred="true" apiLink="http://localhost:3000/xmlrpc/api" blogID="1" />
+        </apis>
+    </service>
+</rsd>

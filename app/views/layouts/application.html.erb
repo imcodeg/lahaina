@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><%= yield(:title) || "#{Blog.title} - #{Blog.tagline}" %></title>
+    <meta name="google-site-verification" content="yv5VvILGOWUiDER1MmUE9R6wQthPiQ2YWBAcTCofM0g" /> 	
+    <%= stylesheet_link_tag('site') %>
+    <%= stylesheet_link_tag('screen') %>
+    <link href="<%=root_url %>/RSD.xml" rel="EditURI" title="RSD" type="application/rsd+xml" />
+    <link href="<%=root_url %>/LiveWriterManifest.xml" rel="wlwmanifest" type="application/wlwmanifest+xml" />
+    <link rel='index' title='Rob Conery' href='http://blog.wekeroad.com' /> 
+    <LINK REL="SHORTCUT ICON" HREF="<%=root_url %>/favicon.ico" />	
+</head>
+<div class="container">
+
+      <div class="column span-24"  id="elhead">
+          <div id="owner" class="column span-6 contact">
+               <a href="/contact">
+                   <%=image_tag("contact.png")%>
+               </a>
+           </div>
+           <div id="logo" class="column span-10 logo" >
+               <a href="/" title="" class="logo">
+                   <%=image_tag("logo2.png")%>
+               </a>
+           </div>
+           <div id="subscriptions" class="column span-6 last subscriptions" style="text-align:center; padding-top:40px;">
+               <a href="http://feeds.feedburner.com/wekeroad/EeKc" target="_blank">
+                   <%=image_tag("subscribe.png")%>
+               </a>
+           </div>
+      </div>
+	<div class="column span-24" id="ribbon">
+	    <div class="column span-6"><a href="/search">Search the Archives</a></div>
+	    <div class="column span-12" style="text-align:center">Hanalei, Hawaii <%=Time.now.to_s(:short) %></div>
+	    
+	</div>
+
+     <%= yield %>
+
+    <div id="gecko">
+      <%=image_tag("gecko.png")%>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-85773-7");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

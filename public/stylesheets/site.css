@@ -1,0 +1,417 @@
+﻿/*
+Theme Name: Gridline Magazine
+Theme URI: http://www.graphpaperpress.com/
+Description: A Wordpress magazine theme based on the Blueprint CSS Framework.
+Version: 1.1
+Author: Thad Allender for Graph Paper Press
+Author URI: http://www.graphpaperpress.com/
+Credits: http://code.google.com/p/blueprintcss/
+*/
+
+/* IMPORTANT - PLEASE READ
+This theme uses the Blueprint CSS framework for
+default positioning, typography, form styling, etc.
+The styles below are specific for this theme
+only.  Feel free to edit them as necessary.  Generally
+speaking, you will will likely never need to edit
+the Blueprint CSS stylesheets, which are located in:
+wp-content/themes/name-of-this-theme/css/
+*/
+
+body
+{
+    margin-bottom: 0;
+    margin-top: 30px;
+}
+#outside { background: url('/images/get.png') top left no-repeat; }
+#post blockquote
+{
+
+	background: url('/images/quote.png') .9em .5em no-repeat;
+	background-color:#f5f5f5;
+	font-style: italic;
+    border-bottom:1px solid #ccc;
+    border-top:1px solid #ccc;
+    padding-top:24px;
+	padding-bottom:20px;
+	margin-top:18px;
+	margin-bottom:18px;
+}
+blockquote p { 
+	padding: 0 20px 0 30px; 
+
+}
+.dateline{
+	font-variant: small-caps;
+    font-weight: bold;
+    letter-spacing: .2em;
+    font-size: 1.1em;
+    border-top:2px solid #f5f5f5;
+	margin-top:4px;
+	margin-bottom:18px;
+	text-align:right;
+}
+.summary{
+	
+	font-size:1.6em;
+	font-style:italic;
+	color:#808080;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #000; }
+a
+{
+	color: #FF3706;
+	text-decoration: none;
+}
+a:active, h2 a:active, h3 a:active
+{
+	color: #8c1b00;
+	text-decoration: none;
+}
+#post h1{
+	margin-top:16px;
+	font-size:2.2em;
+}
+#post p, h2{
+    display:block;
+    clear:both;
+}
+a:hover, h2 a:hover, h3 a:hover
+{
+	color: #464646;
+	text-decoration: none;
+}
+
+hr
+{
+	background: #CCC;
+	height: 1px;
+}
+
+div#logo
+{
+	width: 390px;
+	text-align: center;
+}
+
+div#subscriptions
+{
+	text-align: right;
+	padding-top: 60px;
+}
+div#owner
+{
+	padding-top:68px;
+	padding-left:42px;
+}
+div#gecko
+{
+	position:fixed;
+	right:5px;
+	top:5px;
+}
+
+.photo_align_left
+{
+	float: left;
+	padding: 0 1.5em 1.5em 0;
+}
+.post h2{
+    display:block;
+    clear:both;
+}
+.post img{
+    display: block;
+    clear: both;
+}
+p img
+{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+a.button { float: left; }
+/* Fix for buttons */
+input
+{
+	padding-left: 0;
+	border: 1px solid #CCCCCC;
+}
+ol { margin-left: 35px; }
+label { font-weight: normal; }
+textarea
+{
+	height: 200px;
+	width: 500px;
+}
+.small { font-size: .9em; }
+.nomargin { margin: 0; }
+a.button, button { font-weight: normal; }
+.byline a:hover { color: #000; }
+.five_posts h6 a, .five_posts h4 a, .five_posts h3 a
+{
+	text-decoration: none;
+	margin-bottom: 0;
+}
+#maincontent h2
+{
+	color: #3B4A25;
+	border-bottom: 1px dotted #AAA;
+	margin-bottom: 15px;
+}
+h2 a
+{
+	color: #3B4A25;
+	text-decoration: none;
+}
+#maincontent .post h2 { margin-bottom: 5px; }
+#maincontent .content { padding: 25px 30px 20px 48px; }
+#feature h3
+{
+	margin-bottom: 0;
+	padding: 0;
+}
+
+#feature p img { margin: 7px 0 2em 0; }
+.feature_text { margin-top: 2em; }
+#feature h3{margin-bottom:16px;}
+
+
+#home_right { padding: 0; margin-bottom:16px;}
+#home_right .entry { padding: 0 0 2em 0; }
+.author
+{
+	padding: 1.5em;
+	margin-bottom: 1.5em;
+	background: #eee;
+}
+.author img
+{
+	float: left;
+	padding: 0 1em 1em 0;
+}
+.author p { margin-left: 8em; }
+.author h6
+{
+	margin-left: 7em;
+	border-bottom: 1px #000 dotted;
+}
+.navigation, 
+.navigation a { color: #AAA; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.post { margin-bottom: 25px; }
+.entry { padding-bottom: 25px; }
+/* HEADER */
+#header
+{
+    width: 950px;
+    text-align:center;
+    margin-bottom:12px;
+}
+#header h1, #header .description
+{
+	padding: 0;
+	margin: 0;
+	line-height: 1em;
+}
+
+#ribbon
+{
+    border-bottom-style: double;
+    border-bottom-width: 3px;
+    border-bottom-color: #e5e5e5;
+    border-top-style: double;
+    border-top-width: 3px;
+    border-top-color: #e5e5e5;
+    height: 22px;
+    margin-bottom: 22px;
+    font-variant: small-caps;
+    font-weight: 500;
+    letter-spacing: .2em;
+    font-size: .8em;
+}
+
+.ribbon-text{
+    display:inline;
+}
+
+
+/* FOOTER */
+#footer
+{
+	text-align: center;
+	font-size: .8em;
+    color:#ccc;
+	margin: 0;
+	padding-top:16px;
+}
+#footer a { text-decoration: none; }
+
+
+
+/* LISTS */
+.bottombar { }
+.bottombar h2
+{
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 1em;
+	margin: 1em 0 1em;
+}
+ul
+{
+	list-style-type: none;
+	margin-left: 1em;
+	padding: 0;
+}
+ul li
+{
+	list-style-image: url('/images/icons/li.png');
+	background-repeat: no-repeat;
+	border-top: 1px dotted #e5e5e5;
+	line-height: 2em;
+	margin: 0 0 0 1em;
+	padding: 0;
+}
+ul li a { color: #666; }
+
+
+/* COMMENT STYLES */
+#comments { width: 100%; margin-top:20px;}
+
+.comment{
+    margin-bottom:32px;
+    min-height:110px;
+    border-bottom:1px solid #f5f5f5;
+    padding-bottom:32px;
+}
+.comment-author{
+    color:#237BD0;
+    font-weight:bold;
+}
+.comment-meta:
+{
+    font-size: 1.4em;
+    color: #999999;
+}
+
+.post p
+{
+    display: block;
+}
+
+
+
+.rem {
+color:#008000;
+}
+
+.kwrd {
+color:#0000ff;
+}
+
+.str {
+color:#006080;
+}
+
+.op {
+color:#0000c0;
+}
+
+.preproc {
+color:#cc6633;
+}
+
+.asp {
+background-color:#ffff00;
+}
+
+.html {
+color:#800000;
+}
+
+.attr {
+color:#ff0000;
+}
+
+.alt {
+background-color:#f4f4f4;
+width:100%;
+margin:0;
+}
+
+.lnum {
+color:#606060;
+}
+
+.comment-body{
+
+padding:5px;
+margin-bottom:8px;
+
+}
+#searchbox {
+text-align:left;
+
+}
+#resultbox {
+	border: 3px solid #999;
+	background:#fff;
+	padding:15px;
+	width:620px;
+	margin-top:5px;
+	margin-bottom:10px;
+	color:#000;
+}
+ 
+input {
+	font-family:Georgia;
+	font-weight:bold;
+	font-style:italic;
+	padding:10px;
+	font-size:20px;
+	border: 3px solid #ccc;
+	width:630px;
+}
+ 
+input:focus,
+textarea:focus,
+select:focus {
+  border: 3px solid #999;
+}
+ 
+#googlesearch, #sitesearch {
+	margin-left:20px;
+}
+ 
+ 
+/* Google Style Hacks */
+.gsc-search-box, .gsc-configLabelCell {
+	display:none;
+}
+.gsc-control {
+	width:600px;
+}
+ 
+.gsc-tabHeader {
+display:none;
+}
+.gsc-tabhActive {
+display:none;
+}
+.gsc-tabhInactive {
+	display:none;
+}
+ 
+/* Link Colour */
+#resultbox a, .gs-title, .gs-title b {
+	font-size:13px;
+	font-weight:bold;
+	color:#2253AA !important;
+}
+.gs-visibleUrl, .gs-visibleUrl-short {
+	color:#666 !important;
+}

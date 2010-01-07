@@ -1,0 +1,45 @@
+
+
+Processing XmlrpcController#api (for 127.0.0.1 at 2009-12-28 19:59:31) [POST]
+  Parameters: {"methodCall"=>{"methodName"=>"metaWeblog.getRecentPosts", "params"=>{"param"=>[{"value"=>{"string"=>"1"}}, {"value"=>{"string"=>"admin"}}, {"value"=>{"string"=>"password"}}, {"value"=>{"i4"=>"10"}}]}}}
+
+ActionController::UnknownAction (No action responded to api. Actions: wsdl):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing XmlrpcController#api (for 127.0.0.1 at 2009-12-28 20:02:42) [POST]
+  Parameters: {"methodCall"=>{"methodName"=>"metaWeblog.getRecentPosts", "params"=>{"param"=>[{"value"=>{"string"=>"1"}}, {"value"=>{"string"=>"admin"}}, {"value"=>{"string"=>"password"}}, {"value"=>{"i4"=>"10"}}]}}}
+
+ActionController::UnknownAction (No action responded to api. Actions: wsdl):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing XmlrpcController#api (for 127.0.0.1 at 2009-12-28 20:03:32) [POST]
+  Parameters: {"methodCall"=>{"methodName"=>"metaWeblog.getRecentPosts", "params"=>{"param"=>[{"value"=>{"string"=>"1"}}, {"value"=>{"string"=>"admin"}}, {"value"=>{"string"=>"password"}}, {"value"=>{"i4"=>"10"}}]}}}
+
+ActionController::UnknownAction (No action responded to api. Actions: wsdl):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing XmlrpcController#api (for 127.0.0.1 at 2009-12-28 20:04:14) [POST]
+  Parameters: {"methodCall"=>{"methodName"=>"metaWeblog.getRecentPosts", "params"=>{"param"=>[{"value"=>{"string"=>"1"}}, {"value"=>{"string"=>"admin"}}, {"value"=>{"string"=>"password"}}, {"value"=>{"i4"=>"10"}}]}}}
+
+ActionController::UnknownAction (No action responded to api. Actions: wsdl):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing XmlrpcController#index (for 127.0.0.1 at 2009-12-28 20:05:24) [POST]
+  Parameters: {"methodCall"=>{"methodName"=>"metaWeblog.getRecentPosts", "params"=>{"param"=>[{"value"=>{"string"=>"1"}}, {"value"=>{"string"=>"admin"}}, {"value"=>{"string"=>"password"}}, {"value"=>{"i4"=>"10"}}]}}}
+
+ActionController::UnknownAction (No action responded to index. Actions: wsdl):
+  
+
+Rendering rescues/layout (not_found)

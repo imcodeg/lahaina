@@ -1,0 +1,119 @@
+﻿.gfg-root {
+  height : auto;
+  text-align : center;
+  font-size:.9em;
+  font-family:"Georgia";
+}
+
+.gfg-title {
+  display:none;
+}
+
+.gfg-title a {
+    color:#333;
+}
+
+.gfg-subtitle {
+  display:none
+  }
+
+.gfg-subtitle a {
+  color:#2F3738
+}
+
+.gfg-entry {
+  display:none;
+}
+
+/* To allow correct behavior for overlay */
+.gfg-root .gfg-entry .gf-result {
+  background-color : white;
+  color:#000;
+}
+
+.gfg-list {
+  position : relative;
+  overflow : hidden;
+  text-align : left;
+  margin-bottom : 5px;
+}
+.gfg-listentry a{
+    color:#333;
+}
+.gfg-listentry {
+  overflow : hidden;
+  text-overflow : ellipsis;
+  -o-text-overflow : ellipsis;
+  padding:10px;
+  color:#000;
+}
+
+.gfg-listentry-odd
+{
+    background-color: #F0FFF0;
+}
+
+.gfg-listentry-even {
+}
+
+.gfg-listentry-highlight { 
+  background-repeat: no-repeat;
+  background-position : center left;
+}
+
+/*
+ * FeedControl customizations.
+ */
+
+.gfg-root .gfg-entry .gf-result .gf-title {
+  font-size: 14px;
+  overflow : hidden;
+  text-overflow : ellipsis;
+  -o-text-overflow : ellipsis;
+  margin-bottom : 2px;
+}
+
+.gfg-root .gfg-entry .gf-result .gf-snippet {
+  height : 3.8em;
+  color: #000000;
+  margin-top : 3px;
+}
+
+/*
+ * Easy way to get horizontal mode, applicable via js options to gadget.
+ */
+
+.gfg-branding {
+  white-space : nowrap;
+  overflow : hidden;
+  text-align : left;
+  position : absolute;
+  right : 0px;
+  top : 0px;
+  width : 80px;
+}
+
+.gfg-collapse-open, .gfg-collapse-closed {
+  background-repeat : no-repeat;
+  background-position : center;
+  cursor : pointer;
+  float : right;
+  width : 17px;
+  height : 20px;
+}
+
+.gfg-collapse-open {
+  background-image : url('/Content/images/arrow_right.png');
+}
+
+.gfg-collapse-closed {
+  background-image : url('arrow_close.gif');
+}
+
+.gfg-collapse-href {
+  float : left;
+}
+
+.clearFloat {
+  clear : both;
+}
