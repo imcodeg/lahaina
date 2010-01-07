@@ -1,22 +1,25 @@
-Welcome to Lahaina - Rob's blog rewritten for Rails
-===================================================
+= Welcome to Lahaina - Rob's blog rewritten for Rails
 
 The purpose of this project is to rewrite my blog engine (http://blog.wekeroad.com) using Rails. Why did I write my own blog? Because I believe every developer needs to keep in practice - outside of work - doing something they care about and enjoy. Your blog is your calling card - it says a lot about who you are, and it's always there to let you try new things.
 
 Rails isn't new to me, but it's also not "old hat". I'm primarily a Microsoft developer but I very much want to bring up my working knowledge on the other stacks out there so I can be as versatile as possible.
 
-You're Coming With Me
----------------------
+== You're Coming With Me
+
 I've recorded every "session" of developing this blog into little chunks, which I will be publishing on Github. Development of this application includes the use of:
 
-*MongoDB with mongomapper
-*Cucumber for BDD testing
-*Pickle, for spicing up Cucumber
-*Setting up Rails in a Windows environment using Aptana's (free) RadRails
-*Development on a Mac using TextMate, infusing as many of TextMate's commands as possible
-*Deployment with Capistrano to my server (Ubuntu 9.10)
-*Discussion of deployment to Heroku
-*Lean-focused (in a n00by way) development using Kanban board from AgileZen.com (note: this isn't the focus of this screencast)
-*Switching mid-stream from SQLite to MongoDb and all that it entails...
+* MongoDB with mongomapper
+* Cucumber for BDD testing
+* Pickle, for spicing up Cucumber
+* Setting up Rails in a Windows environment using Aptana's (free) RadRails
+* Development on a Mac using TextMate, infusing as many of TextMate's commands as possible
+* Deployment with Capistrano to my server (Ubuntu 9.10)
+* Discussion of deployment to Heroku
+* Lean-focused (in a n00by way) development using Kanban board from AgileZen.com (note: this isn't the focus of this screencast)
+* Switching mid-stream from SQLite to MongoDb and all that it entails...
 
 This project was a lot of fun - I really had a good time doing it.
+
+== Copyright
+
+Copyright (c) 2010 Rob Conery. See LICENSE for details.
