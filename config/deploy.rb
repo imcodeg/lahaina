@@ -22,4 +22,9 @@ namespace :deploy do
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
    end
+   task :symlink, :roles => :app do
+     run <<-CMD
+       ln -nfs #{shared_path}/system/uploads #{release_path}/public/uploads
+     CMD
+   end
  end

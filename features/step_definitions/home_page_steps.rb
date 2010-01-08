@@ -29,6 +29,7 @@ end
 
 
 Then /^([0-9]+) posts should exist$/ do |num|
+  
   Post.all().count.should==num.to_i
 end
 

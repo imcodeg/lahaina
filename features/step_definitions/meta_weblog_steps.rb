@@ -13,7 +13,13 @@ end
 
 
 Then /^I should not be able to login as "([^\"]*)" with password "([^\"]*)"$/ do |arg1, arg2|
-    !api.authenticate(arg1,arg2)
+    
+    begin
+      !api.authenticate(arg1,arg2)
+    rescue
+      true
+    end
+    
 end
 
 But /^I should be able to login as "([^\"]*)" with password "([^\"]*)"$/ do |arg1, arg2|
@@ -21,6 +27,7 @@ But /^I should be able to login as "([^\"]*)" with password "([^\"]*)"$/ do |arg
 end
 
 And /([0-9]+) posts should be returned by metaweblogservice$/ do |count|
+ 
   posts=api.getRecentPosts(1,"admin","secret",count)
   posts.count.should==count.to_i
 end
@@ -41,7 +48,7 @@ Given /^a post exists with slug: "([^\"]*)"$/ do |arg1|
 end
 Given /^a post exists with slug: "([^\"]*)", title: "([^\"]*)", body: "([^\"]*)"$/ do |arg1, arg2, arg3|
 
-  assert Post.create!(:slug=>arg1,:title=>arg2,:body=>arg3,:published_at=>arg2)
+  assert Post.create!(:slug=>arg1,:title=>arg2,:body=>arg3,:published_at=>Time.now)
   
 end
 Then /^a post should exist with slug: "([^\"]*)", title: "([^\"]*)", body: "([^\"]*)"$/ do |arg1, arg2, arg3|
@@ -49,7 +56,7 @@ Then /^a post should exist with slug: "([^\"]*)", title: "([^\"]*)", body: "([^\
 end
 Given /^a post exists with slug: "([^\"]*)", is_published: true$/ do |arg1|
 
-  Post.create!(:title=>"title",:slug=>arg1,:body=>"body",:is_published=>true)
+  Post.create!(:title=>"title",:slug=>arg1,:body=>"body",:is_published=>true,:published_at=>Time.now)
 end
 Given /^a post exists with slug: "([^\"]*)", published_at: "([^\"]*)"$/ do |arg1, arg2|
 
@@ -104,7 +111,9 @@ And /^categories "([^\"]*)" and "([^\"]*)" should have post with slug "([^\"]*)"
 
 end
 When /^I call editPost with slug "([^\"]*)" and change the title to "([^\"]*)" and body to "([^\"]*)"$/ do |slug, title, body|
-   article=api.getPost(slug, "admin","secret")
+   
+   id=Post.find_by_slug(slug).id
+   article=api.getPost(id, "admin","secret")
    article.title=title
    article.description=body
    article.mt_text_more=body
@@ -113,11 +122,13 @@ When /^I call editPost with slug "([^\"]*)" and change the title to "([^\"]*)" a
 end
 
 When /^I call editPost with slug "([^\"]*)" and set published to false$/ do |slug|
-  article=api.getPost(slug, "admin","secret")
+  id=Post.find_by_slug(slug).id
+  article=api.getPost(id, "admin","secret")
   api.editPost(slug,"admin","secret",article,0)
 end
 When /^I call editPost with slug "([^\"]*)" and set published_at to "([^\"]*)"$/ do |slug, pub|
-  article=api.getPost(slug, "admin","secret")
+  id=Post.find_by_slug(slug).id
+  article=api.getPost(id, "admin","secret")
   article.pubDate=pub
 end
 Then /^I should have 2 categories when calling getCategories with api$/ do

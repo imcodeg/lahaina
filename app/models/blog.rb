@@ -11,4 +11,8 @@ class Blog
     "Rob Conery"
   end
   
+  def self.url
+    "http://sudofactory.com"
+  end
+  
 end

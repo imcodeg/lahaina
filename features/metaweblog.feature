@@ -16,19 +16,19 @@ Scenario: API should validate user
 Scenario: Retrieve 10 recent posts
 	Given the following posts exist
 	 | title    | body           | published_at | slug   |
-	 | title 1  | Lorem Ipsum 1  | 12/12/09     | slug1  |
-	 | title 2  | Lorem Ipsum 2  | 12/13/09     | slug2  |
-	 | title 3  | Lorem Ipsum 3  | 12/14/09     | slug3  |
-	 | title 4  | Lorem Ipsum 4  | 12/15/09     | slug4  |
-	 | title 5  | Lorem Ipsum 5  | 12/16/09     | slug5  |
-	 | title 6  | Lorem Ipsum 6  | 12/17/09     | slug6  |
-	 | title 7  | Lorem Ipsum 7  | 12/18/09     | slug7  |
-	 | title 8  | Lorem Ipsum 8  | 12/19/09     | slug8  |
-	 | title 9  | Lorem Ipsum 9  | 12/20/09     | slug9  |
-	 | title 10 | Lorem Ipsum 10 | 12/21/09     | slug10 |
-	 | title 11 | Lorem Ipsum 11 | 12/22/09     | slug11 |
-	 | title 12 | Lorem Ipsum 12 | 12/23/09     | slug12 |
-	 | title 13 | Lorem Ipsum 13 | 12/24/09     | slug13 |
+	 | title 1  | Lorem Ipsum 1  | 12/12/2009     | slug1  |
+	 | title 2  | Lorem Ipsum 2  | 12/13/2009     | slug2  |
+	 | title 3  | Lorem Ipsum 3  | 12/14/2009     | slug3  |
+	 | title 4  | Lorem Ipsum 4  | 12/15/2009     | slug4  |
+	 | title 5  | Lorem Ipsum 5  | 12/16/2009     | slug5  |
+	 | title 6  | Lorem Ipsum 6  | 12/17/2009     | slug6  |
+	 | title 7  | Lorem Ipsum 7  | 12/18/2009     | slug7  |
+	 | title 8  | Lorem Ipsum 8  | 12/19/2009     | slug8  |
+	 | title 9  | Lorem Ipsum 9  | 12/20/2009     | slug9  |
+	 | title 10 | Lorem Ipsum 10 | 12/21/2009     | slug10 |
+	 | title 11 | Lorem Ipsum 11 | 12/22/2009     | slug11 |
+	 | title 12 | Lorem Ipsum 12 | 12/23/2009     | slug12 |
+	 | title 13 | Lorem Ipsum 13 | 12/24/2009     | slug13 |
 
 	Then 13 posts should exist
     And 10 posts should be returned by metaweblogservice
@@ -48,10 +48,6 @@ Scenario: Create new post with future publish date
 Scenario: Create new post with published off
   Given I call newPost with "publish false", body "body", published set to false
   Then the post with slug "publish-false" should not be published
-
-Scenario: Get Single post
-  Given I call newPost with "single post", body "body", categories "cat1" and "cat2"
-  Then 1 post should be returned by getPost with "single-post"
 
 Scenario: Edit Post
   Given a post exists with slug: "edit-post", title: "edit post", body: "Lorem Ipsum 1"

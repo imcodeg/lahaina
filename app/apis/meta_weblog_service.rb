@@ -26,6 +26,7 @@ class Article < ActionWebService::Struct
   member :permaLink,          :string
   member :categories,         [:string]
   member :mt_text_more,       :string
+  member :mt_basename,       :string
   member :mt_excerpt,         :string
   member :mt_keywords,        :string
   member :mt_allow_comments,  :int
@@ -35,6 +36,8 @@ class Article < ActionWebService::Struct
   member :wp_slug,            :string
   member :pubDate,            :time
 end
+
+
 
 class MediaObject < ActionWebService::Struct
     member :bits, :string
@@ -72,8 +75,7 @@ class MetaWeblogApi < ActionWebService::API::Base
   api_method :newMediaObject,
      :expects => [ {:blogid => :string}, {:username => :string}, {:password => :string}, {:data => MediaObject} ],
      :returns => [Url]
-     
-         
+
 end
 
 class MetaWeblogService < ActionWebService::Base
@@ -84,9 +86,10 @@ class MetaWeblogService < ActionWebService::Base
    end
    
    def newMediaObject(blogid,username,password,data)
-     if authenticate(username,password)
+      
+      authenticate(username,password)
        
-       root_url=Rails.env=="production" ? "http:blog.wekeroad.com" : "http://localhost:3000"
+      root_url=Rails.env=="production" ? Blog.url : "http://localhost:3000"
 
       upload_dir="#{RAILS_ROOT}/public/uploads/"
       upload_path=upload_dir+File.basename(data.name)
@@ -109,56 +112,58 @@ class MetaWeblogService < ActionWebService::Base
       #return an absolute URL to the item
       root_url+"/uploads/"+File.basename(data.name)
       
-    end
+
    end
 
    def getRecentPosts(blogid, username, password, limit)
-     if authenticate(username,password)
-       Post.find(:all, :limit=>limit, :order=>"published_at DESC").collect{ |c| struct_from(c) }
-     end
+     
+     authenticate(username,password)
+     posts=Post.find(:all, :limit=>limit, :order=>"published_at DESC")
+     articles=posts.collect { |c| struct_from(c) }
+     articles
+     
    end
    
    def getCategories(blogid,username,password)
-     Category.find(:all).collect{|c| c.name}
-   end
-   def editPost(slug, username, password, article, publish)
-     if(authenticate(username,password))
-       post=Post.find_by_slug(article.wp_slug)
-       if(post)  
-         bind_post(post,article)
-         if(publish==0)
-           post.is_published=false
-         end
-         
-         if(!post.save)
-           raise "Can't save post...#{post.inspect}"
-         end
-         post
-       else
-         raise "Invalid post"
-       end
-     end
+     Category.all.collect{|c| c.name}
    end
    
-   def newPost(blogid, username,password,article,publish)
-
-     if(authenticate(username,password))
-        post=Post.new
-        bind_post(post,article)
-        
-        
-        
-        if(publish==0)
-          post.is_published=false
-        end
-        
-        if(!post.save)
-          raise "Can't save post...#{post.inspect}"
-        end
-        assign_categories(article,post)
-        post
-     end
+   def editPost(slug, username, password, hash, publish)
+     authenticate(username,password)
+     article=Article.new(hash)
+     
+     post=Post.find_by_slug(article.wp_slug)
+     
+     if(post)  
+       bind_post(post,article)
+       if(publish==0)
+         post.is_published=false
+       end
        
+       if(!post.save)
+         raise "Can't save post...#{post.inspect}"
+       end
+       
+     end
+     true
+   end
+   
+   def newPost(blogid, username,password,hash,publish)
+
+      authenticate(username,password)
+      article=Article.new(hash)
+      post=Post.new
+      bind_post(post,article)
+     
+      if(publish==0)
+        post.is_published=false
+      end
+    
+      if(!post.save)
+        raise "Can't save post...#{post.inspect}"
+      end
+      assign_categories(article,post)
+      "#{Blog.url}#{post.url}"   
    end
    
    def assign_categories(article, post)
@@ -172,21 +177,23 @@ class MetaWeblogService < ActionWebService::Base
      end
    end
    
-   def getPost(slug, username,password)
-    if authenticate(username,password)
-      struct_from(Post.find_by_slug(slug))
-    else
-      raise "Invalid login"
-    end
-   end
-   
+   def getPost(id, username,password)
+     authenticate(username,password)
+     post=Post.find(id)
 
+     if(!post)
+      raise "Can't find post with slug #{slug}"
+     end
+     struct_from(post)
+   end
    
    def authenticate(username, password)
-     User.find_by_username_password(username,password)
+     user=User.find_by_username_and_password(username,password)
+     if(!user)
+       raise "Invalid login"
+     end
    end
 
- 
    def bind_post(post,article)
      post.is_published=true
      #some left/right
@@ -203,8 +210,6 @@ class MetaWeblogService < ActionWebService::Base
        post.excerpt=""
      end
 
-     
-     
      #for posterity
      if(article.postid)
        post.post_id=article.postid.to_i
@@ -223,7 +228,6 @@ class MetaWeblogService < ActionWebService::Base
        post.is_published=false
      end
 
-
      #set the slug
      if(article.wp_slug)
        post.slug=article.wp_slug.downcase      
@@ -236,13 +240,14 @@ class MetaWeblogService < ActionWebService::Base
    end
  
    def struct_from(post)
+     
        Article.new(
        :description       => post.excerpt,
        :title             => post.title,
        :postid            => post.id.to_s,
-       :url               => "",
-       :link              => "",
-       :permaLink         => "",
+       :url               => "#{Blog.url}#{post.url}",
+       :link              => "#{Blog.url}#{post.url}",
+       :permaLink         => "#{Blog.url}#{post.url}",
        :categories        => post.categories.collect{|c| c.name},
        :mt_text_more      => post.body,
        :mt_excerpt        => "",
@@ -253,7 +258,7 @@ class MetaWeblogService < ActionWebService::Base
        :wp_slug           => post.slug,
        :dateCreated       => (post.published_at.utc rescue ''),
        :pubDate           => (post.published_at.utc rescue Time.now)
-         )
+      )
    end
 
 end
