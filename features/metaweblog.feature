@@ -5,8 +5,8 @@ Feature: Metaweblog Support
 
 Background:
 	Given the following users exist
-	  | username | password | site_url|
-	  | admin    | secret   | www.blog.com|
+	  | username | password |
+	  | admin    | secret   |
 
 Scenario: API should validate user
 
