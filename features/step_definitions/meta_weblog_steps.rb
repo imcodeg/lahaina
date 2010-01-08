@@ -41,7 +41,8 @@ end
 Then /^the post with slug "([^\"]*)" should not be published$/ do |arg1|
   post=Post.find_by_slug(arg1)
   assert post
-  assert !post.is_published
+
+  assert_equal false, post.is_published
 end
 Given /^a post exists with slug: "([^\"]*)"$/ do |arg1|
   Post.find_by_slug(arg1)
@@ -69,32 +70,33 @@ Given /^([0-9]+) categories exist$/ do |num|
 end
 Given /^I call newPost with "([^\"]*)", body "([^\"]*)", categories "([^\"]*)" and "([^\"]*)"$/ do |title, body, cat1, cat2|
 
-  article=Article.new
-  article.title=title
-  article.description=body
-  article.mt_text_more=body
-  article.pubDate=Time.now
-  article.categories=[cat1,cat2]
+  article={
+    :title=>title,
+    :description=>body,
+    :mt_text_more=>body,
+    :pubDate=>Time.now,
+    :categories=>[cat1,cat2]
+  }
   api.newPost(1,"admin","secret",article,1)
 end
 Given /^I call newPost with "([^\"]*)", body "([^\"]*)", published set to false$/ do |title, body|
-  article=Article.new
-  article.title=title
-  article.description=body
-  article.mt_text_more=body
+  article={
+    :title=>title,
+    :description=>body,
+    :mt_text_more=>body,
+    :pubDate=>Time.now,
+  }
   api.newPost(1,"admin","secret",article,0)
 end
 Given /^I call newPost with "([^\"]*)", body "([^\"]*)", categories "([^\"]*)" and "([^\"]*)", published 2 days from now$/ do |title, body, cat1, cat2|
-  
-  article=Article.new
-  article.title=title
-  article.description=body
-  article.categories=[cat1,cat2]
-  article.pubDate=Time.gm(Time.now.year+1,"01","01")
-  article.mt_text_more=body
-  post=api.newPost(1,"admin","secret",article,1)
-  #verify going in
-  assert !post.is_published
+  article={
+    :title=>title,
+    :description=>body,
+    :mt_text_more=>body,
+    :pubDate=>Time.gm(Time.now.year+1,"01","01"),
+    :categories=>[cat1,cat2]
+  }
+  api.newPost(1,"admin","secret",article,1)
   
 end
 
@@ -113,18 +115,32 @@ end
 When /^I call editPost with slug "([^\"]*)" and change the title to "([^\"]*)" and body to "([^\"]*)"$/ do |slug, title, body|
    
    id=Post.find_by_slug(slug).id
+   
    article=api.getPost(id, "admin","secret")
-   article.title=title
-   article.description=body
-   article.mt_text_more=body
-   article.wp_slug=slug
-   api.editPost(slug,"admin","secret",article,1)
+   
+   hash={
+     :title=>title,
+     :description=>body,
+     :mt_text_more=>body,
+     :wp_slug=>slug,
+     :pubDate=>Time.gm(Time.now.year+1,"01","01"),
+   }
+   api.editPost(slug,"admin","secret",hash,1)
 end
 
 When /^I call editPost with slug "([^\"]*)" and set published to false$/ do |slug|
   id=Post.find_by_slug(slug).id
   article=api.getPost(id, "admin","secret")
-  api.editPost(slug,"admin","secret",article,0)
+  hash={
+    :title=>article.title,
+    :description=>"nada",
+    :mt_text_more=>"nada",
+    :wp_slug=>article.wp_slug,
+    :pubDate=>Time.gm(Time.now.year+1,"01","01"),
+  }
+  
+  
+  api.editPost(slug,"admin","secret",hash,0)
 end
 When /^I call editPost with slug "([^\"]*)" and set published_at to "([^\"]*)"$/ do |slug, pub|
   id=Post.find_by_slug(slug).id
@@ -144,12 +160,12 @@ When /^I upload a file using the api$/ do
   media.bits=bits
   uploaded=api.newMediaObject(1,"admin","secret",media)
   
-  assert_equal uploaded,"http://localhost:3000/uploads/development.log"
+  assert_equal uploaded.url,"#{Blog.url}/uploads/development.log"
 end
 
 Then /^that file should exist in public uploads$/ do
-  file_path="#{RAILS_ROOT}/log/cucumber.log"
-  expected_path="#{RAILS_ROOT}/public/uploads/cucumber.log"
+  file_path="#{RAILS_ROOT}/log/development.log"
+  expected_path="#{RAILS_ROOT}/public/uploads/development.log"
   assert File.file?(expected_path)
 end
 

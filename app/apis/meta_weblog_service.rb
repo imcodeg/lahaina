@@ -1,5 +1,5 @@
 class CategoryInfo < ActionWebService::Struct
-{
+
     member :categoryId,       :string
     member :parentId,       :string
     member :description,       :string
@@ -7,7 +7,7 @@ class CategoryInfo < ActionWebService::Struct
     member :title,       :string
     member :htmlUrl,       :string
     member :rssUrl,       :string
-}
+end
 
 class ArticleComment< ActionWebService::Struct
     member :date_created_gmt, :date
@@ -136,13 +136,13 @@ class MetaWeblogService < ActionWebService::Base
      cats=Category.all
      cats.collect do |c|
        CategoryInfo.new(
-          :categoryId=c.id,
-          :parentId='',
-          :description=c.name,
-          :categoryName=c.name,
-          :title=c.name,
-          :htmlUrl="#{Blog.url}/category/#{c.name}",
-          :rssUrl=''
+          :categoryId=>c.id,
+          :parentId=>'',
+          :description=>c.name,
+          :categoryName=>c.name,
+          :title=>c.name,
+          :htmlUrl=>"#{Blog.url}/category/#{c.name}",
+          :rssUrl=>''
        )
      end
      
@@ -220,6 +220,9 @@ class MetaWeblogService < ActionWebService::Base
      #some left/right
      post.title=article.title
      
+     if(!article.wp_slug)
+      article.wp_slug=''
+     end
      if(article.mt_text_more)
        #the post has been split so pop the description as the excerpt,
        #and the body as the mt_text_more
