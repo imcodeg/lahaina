@@ -35,6 +35,7 @@ class Post
     str = str.gsub(/[ ]+/," ")
     str = str.gsub(/ /,"-")
     str.downcase
+    str
   end
   def year
     published_at.year.to_s
