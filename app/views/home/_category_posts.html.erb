@@ -4,7 +4,7 @@
 	 <%if(!@category.posts.blank?)%>			
 	    <%first = @category.posts.first%>
 		<%if(first)%>
-		    <%=image_tag("#{@category.name}.png")%>	    
+		    <%=image_tag("#{@category.slug}.png")%>	    
 		    <h6><a href="<%=first.url%>" rel="bookmark" title="Permalink to <%=first.title %>"><%=first.title %></a></h6> 
 		    <p class="byline"><%=first.pretty_date%> | <a href="<%=first.url%>/#comments" title="Comment on <%=first.title %>">Discuss</a></p>
 		    <p><%=first.excerpt%></p> 

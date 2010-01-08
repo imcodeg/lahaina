@@ -1,10 +1,12 @@
 default_run_options[:pty] = true
 set :application, "lahaina"
-set :repository,  "git@github.com:robconery/Lahaina.git"
-
-set :scm, :git
-ssh_options[:forward_agent] = true
+set :repository,  "git@github.com:robconery/lahaina.git"
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+set :scm, :git
+
+ssh_options[:forward_agent] = true
+
+set :deploy_to, "/home/rob/www/lahaina"
 
 role :web, "sudofactory.com"                          # Your HTTP server, Apache/etc
 role :app, "sudofactory.com"                          # This may be the same as your `Web` server

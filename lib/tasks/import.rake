@@ -1,5 +1,5 @@
 def get_client
-  MetaWebLogClient.new('URL_TO_XMLAPI',"1","USER","PASSWORD")
+  MetaWebLogClient.new('XMLRPC_URL',"1","USER","PASSWORD")
 end
 
 
