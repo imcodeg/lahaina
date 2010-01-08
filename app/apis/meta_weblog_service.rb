@@ -1,4 +1,13 @@
-
+class CategoryInfo < ActionWebService::Struct
+{
+    member :categoryId,       :string
+    member :parentId,       :string
+    member :description,       :string
+    member :categoryName,       :string
+    member :title,       :string
+    member :htmlUrl,       :string
+    member :rssUrl,       :string
+}
 
 class ArticleComment< ActionWebService::Struct
     member :date_created_gmt, :date
@@ -124,7 +133,20 @@ class MetaWeblogService < ActionWebService::Base
    end
    
    def getCategories(blogid,username,password)
-     Category.all.collect{|c| c.name}
+     cats=Category.all
+     cats.collect do |c|
+       CategoryInfo.new(
+          :categoryId=c.id,
+          :parentId='',
+          :description=c.name,
+          :categoryName=c.name,
+          :title=c.name,
+          :htmlUrl="#{Blog.url}/category/#{c.name}",
+          :rssUrl=''
+       )
+     end
+     
+     
    end
    
    def editPost(slug, username, password, hash, publish)
