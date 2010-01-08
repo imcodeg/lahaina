@@ -112,7 +112,6 @@ class MetaWeblogService < ActionWebService::Base
       #return an absolute URL to the item
       root_url+"/uploads/"+File.basename(data.name)
       
-
    end
 
    def getRecentPosts(blogid, username, password, limit)
@@ -141,7 +140,7 @@ class MetaWeblogService < ActionWebService::Base
        end
        
        if(!post.save)
-         raise "Can't save post...#{post.inspect}"
+         raise "Can't save edits to post...#{post.inspect}"
        end
        
      end
@@ -149,7 +148,7 @@ class MetaWeblogService < ActionWebService::Base
    end
    
    def newPost(blogid, username,password,hash,publish)
-
+ 
       authenticate(username,password)
       article=Article.new(hash)
       post=Post.new
@@ -160,7 +159,7 @@ class MetaWeblogService < ActionWebService::Base
       end
     
       if(!post.save)
-        raise "Can't save post...#{post.inspect}"
+        raise "Can't save new post...#{post.inspect}"
       end
       assign_categories(article,post)
       "#{Blog.url}#{post.url}"   
@@ -229,16 +228,13 @@ class MetaWeblogService < ActionWebService::Base
      end
 
      #set the slug
-     if(article.wp_slug)
+     if(article.wp_slug!='')
        post.slug=article.wp_slug.downcase
      else
        post.slug=post.create_slug(post.title)
      end
-           
 
-     
      post
-
    end
  
    def struct_from(post)
