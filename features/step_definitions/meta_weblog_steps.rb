@@ -173,3 +173,10 @@ Then /^the post with slug "([^\"]*)" should have ([0-9]+) comments$/ do |arg1,nu
   post=Post.find_by_slug(arg1)
   assert_equal num.to_i,post.comments.count
 end
+Then /^I should have ([0-9]+) categories with getCategories$/ do |num|
+  cats=api.getCategories("1","admin","secret")
+  raise cats.inspect
+  assert_equal num.to_i,cats.count
+end
+
+

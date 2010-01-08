@@ -79,7 +79,7 @@ class MetaWeblogApi < ActionWebService::API::Base
   
   api_method :getCategories,
      :expects => [ {:blogid => :string}, {:username => :string}, {:password => :string} ],
-     :returns => [[:string]]
+     :returns => [[CategoryInfo]]
      
   api_method :newMediaObject,
      :expects => [ {:blogid => :string}, {:username => :string}, {:password => :string}, {:data => MediaObject} ],
@@ -145,8 +145,7 @@ class MetaWeblogService < ActionWebService::Base
           :rssUrl=>''
        )
      end
-     
-     
+
    end
    
    def editPost(slug, username, password, hash, publish)

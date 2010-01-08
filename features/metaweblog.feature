@@ -73,6 +73,16 @@ Scenario: Uploading new file
   When I upload a file using the api
   Then that file should exist in public uploads
 
+Scenario: Categories
+  Given the database is empty
+  Given the following categories exist
+	| slug     | name     |
+	| subsonic | SubSonic |
+	| opinion  | Opinion  |
+	| mvc-storefront | MVC Storefront |
+  Then I should have 3 categories with getCategories
+
+
 
 
 
