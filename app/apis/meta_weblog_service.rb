@@ -154,7 +154,11 @@ class MetaWeblogService < ActionWebService::Base
       article=Article.new(hash)
       post=Post.new
       bind_post(post,article)
-     
+      
+      if(post.slug='')
+        post.slug=post.create_slug(title)
+      end
+      
       if(publish==0)
         post.is_published=false
       end
@@ -229,11 +233,8 @@ class MetaWeblogService < ActionWebService::Base
      end
 
      #set the slug
-     if(article.wp_slug!="")
-       post.slug=article.wp_slug.downcase      
-     else
-       post.slug=post.create_slug(article.title)
-     end
+     post.slug=article.wp_slug.downcase      
+
      
      post
 
