@@ -12,6 +12,8 @@ role :web, "sudofactory.com"                          # Your HTTP server, Apache
 role :app, "sudofactory.com"                          # This may be the same as your `Web` server
 role :db,  "sudofactory.com", :primary => true        # This is where Rails migrations will run
 
+after "deploy:symlink","customs:symlink"
+after "deploy", "deploy:cleanup"
 
 # If you are using Passenger mod_rails uncomment this:
 # if you're still using the script/reapear helper you will need
@@ -22,6 +24,8 @@ namespace :deploy do
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
    end
+ end
+ namespace(:customs) do
    task :symlink, :roles => :app do
      run <<-CMD
        ln -nfs #{shared_path}/system/uploads #{release_path}/public/uploads
