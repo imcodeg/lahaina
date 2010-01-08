@@ -229,7 +229,7 @@ class MetaWeblogService < ActionWebService::Base
      end
 
      #set the slug
-     if(article.wp_slug)
+     if(article.wp_slug!="")
        post.slug=article.wp_slug.downcase      
      else
        post.slug=post.create_slug(article.title)
