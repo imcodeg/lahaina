@@ -107,11 +107,11 @@ class MetaWeblogService < ActionWebService::Base
       File.open(upload_path, "wb") { |f| f.write(data.bits) }
       
       #make sure it's readable
-      File.chmod(0600, upload_path)
+      File.chmod(0777, upload_path)
 
       #return an absolute URL to the item
-      root_url+"/uploads/"+File.basename(data.name)
-      
+      url="#{Blog.url}/uploads/#{File.basename(data.name)}"
+      Url.new(:url=>url)
    end
 
    def getRecentPosts(blogid, username, password, limit)

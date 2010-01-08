@@ -2,9 +2,9 @@
 <div class="column span-18 colborder">
 	<div id="post">
 	    <h1><%=@post.title %></h1>
-		 <p class="summary">
+		 <div id="article-summary">
 			<%=@post.excerpt%>
-		 </p>
+		 </div>
 	     <p class="article">
 	        <div class="dateline"><%=@post.pretty_date%></div><%=@post.body%>
 	    </p>
