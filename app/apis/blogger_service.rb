@@ -57,7 +57,12 @@ class BloggerService < ActionWebService::Base
     end
     
     def deletePost(appkey, postid, username, password, publish)
-        Post.delete(postid)
+        post=Post.find(postid)
+        if(post)
+          post.destroy
+        else
+          raise "Can't find post with #{postid}"
+        end
         true
     end
 end
