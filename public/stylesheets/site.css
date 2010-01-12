@@ -20,8 +20,7 @@ wp-content/themes/name-of-this-theme/css/
 
 body
 {
-    margin-bottom: 0;
-    margin-top: 30px;
+
 }
 #outside { background: url('/images/get.png') top left no-repeat; }
 #post blockquote
@@ -246,7 +245,7 @@ h2 a
 
 /* FOOTER */
 #footer a{
-	color:#fff;
+	color:#666666;
 }
 #footer
 {
@@ -254,11 +253,9 @@ h2 a
 	font-size: .9em;
     color:#ccc;
 	margin: 0;
-	padding-top:16px;
-	border-top:solid 3px #000;
+	border-top:solid 1px #e5e5e5;
 	padding-top:24px;
 	height:60px;
-	background-color:#334433;
 }
 #footer a { text-decoration: none; }
 
