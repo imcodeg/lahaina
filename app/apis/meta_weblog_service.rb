@@ -88,7 +88,7 @@ class MetaWeblogApi < ActionWebService::API::Base
 
 end
 
-class MetaWeblogService < ActionWebService::Base
+class MetaWeblogService < XMLRPCService
    web_service_api MetaWeblogApi
      
    def upload_path(file = nil)
@@ -206,13 +206,6 @@ class MetaWeblogService < ActionWebService::Base
       raise "Can't find post with slug #{slug}"
      end
      struct_from(post)
-   end
-   
-   def authenticate(username, password)
-     user=User.find_by_username_and_password(username,password)
-     if(!user)
-       raise "Invalid login"
-     end
    end
 
    def bind_post(post,article)

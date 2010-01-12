@@ -30,47 +30,39 @@ class BloggerApi < ActionWebService::API::Base
  
 end
 
-class BloggerService < ActionWebService::Base
+class BloggerService < XMLRPCService
   web_service_api BloggerApi
   def getUserInfo(appkey, username, password)
-      user=User.find_by_username_password(username,password)
-      if(user)
-        UserInfo.new(
-          :userid => username,
-          :firstname => username,
-          :lastname => "",
-          :nickname => "",
-          :email => "",
-          :url => Blog.url
-        )
-      else
-        raise "Invalid user!"
-      end
+      authenticate(username,password)
+      UserInfo.new(
+        :userid => username,
+        :firstname => username,
+        :lastname => "",
+        :nickname => "",
+        :email => "",
+        :url => Blog.url
+      )
+
     end
 
     def getUsersBlogs(appkey, username, password)
-      user=User.find_by_username_password(username,password)
-      if(user)
+      authenticate(username,password)
+      
           [BlogInfo.new(
             :url      => Blog.url,
             :blogid   => "1",
             :blogName => Blog.title
           )]
-      end
     end
     
     def deletePost(appkey, postid, username, password, publish)
-      user=User.find_by_username_password(username,password)
-      if(user)
-        post=Post.find(postid)
-        if(post)
+       authenticate(username,password)
+       post=Post.find(postid)
+       if(post)
           post.destroy
-        else
+       else
           raise "Can't find post with #{postid}"
-        end
-        true
-      else 
-        raise "Invalid user!"
-      end
+       end
+       true
     end
 end
