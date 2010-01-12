@@ -215,6 +215,7 @@ class MetaWeblogService < XMLRPCService
      
      if(!post.published_at)
        post.published_at=Time.now
+     end 
      
      if(!article.wp_slug)
       article.wp_slug=''
