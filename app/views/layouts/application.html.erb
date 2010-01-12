@@ -24,7 +24,7 @@
                    <%=image_tag("logo2.png")%>
                </a>
            </div>
-           <div id="subscriptions" class="column span-6 last subscriptions" style="text-align:center; padding-top:40px;">
+           <div id="subscriptions" class="column span-6 last subscriptions">
                <a href="http://feeds.feedburner.com/wekeroad/EeKc" target="_blank">
                    <%=image_tag("subscribe.png")%>
                </a>
@@ -32,16 +32,14 @@
       </div>
 	<div class="column span-24" id="ribbon">
 	    <div class="column span-6"><a href="/search">Search the Archives</a></div>
-	    <div class="column span-12" style="text-align:center">Hanalei, Hawaii <%=Time.now.to_s(:short) %></div>
+	    <div class="column span-12" style="text-align:center">Hanalei, Hawaii <%=pretty_date(Time.now)%></div>
 	    
 	</div>
 
      <%= yield %>
 
     <div class="clear"></div>
-    <div id="footer">
-    <p>&copy 2010 Rob Conery</p>
-    </div>
+
 
 
     <div id="gecko">
@@ -49,7 +47,15 @@
     </div>
 
 </div>
-
+<div id="footer">
+<p>&copy <%=Time.now.year%> Rob Conery. This blog was built 
+<a href="/contact">by me</a> 
+ using Rails 2.3.5 as part of the Tekpub 
+<a href="http://tekpub.com/preview/byob-rails">
+"Build Your Own Blog:: Rails"
+</a> series
+</p>
+</div>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

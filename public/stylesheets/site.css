@@ -245,13 +245,20 @@ h2 a
 
 
 /* FOOTER */
+#footer a{
+	color:#fff;
+}
 #footer
 {
 	text-align: center;
-	font-size: .8em;
+	font-size: .9em;
     color:#ccc;
 	margin: 0;
 	padding-top:16px;
+	border-top:solid 3px #000;
+	padding-top:24px;
+	height:60px;
+	background-color:#334433;
 }
 #footer a { text-decoration: none; }
 
@@ -372,7 +379,7 @@ text-align:left;
 	color:#000;
 }
  
-input {
+#searchbox input {
 	font-family:Georgia;
 	font-weight:bold;
 	font-style:italic;

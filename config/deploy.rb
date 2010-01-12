@@ -30,5 +30,15 @@ namespace :deploy do
      run <<-CMD
        ln -nfs #{shared_path}/system/uploads #{release_path}/public/uploads
      CMD
+     run <<-CMD
+       ln -nfs #{shared_path}/wp-content #{release_path}/public/wp-content
+     CMD
+     run <<-CMD
+       ln -nfs #{shared_path}/Content #{release_path}/public/Content
+     CMD
+     run <<-CMD
+       ln -nfs #{shared_path}/files #{release_path}/public/files
+     CMD
+     
    end
  end

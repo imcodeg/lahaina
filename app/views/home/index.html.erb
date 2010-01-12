@@ -19,9 +19,7 @@
                     <a href='http://theloungenet.com'>Ads by The Lounge</a>
                 </p>
             </div>
-			<div class="column">			
- 				<%=image_tag("mongo.png")%>
-			</div>
+
             <div class="column" style="text-align:left">  		
                <%=image_tag("categories.png")%>
                 <ul>
@@ -29,6 +27,12 @@
 				    <li><%= link_to cat.name, :action => "index", :controller=>"post", :slug=>cat.slug %></li>
 				  <% end %>
 				</ul>
+			</div>
+			
+			<div class="column span-">
+				<p>			
+ 				<%=image_tag("mongo.png")%>
+				</p>
 			</div>
 		</div>
     </div>
