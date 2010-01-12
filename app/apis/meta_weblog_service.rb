@@ -44,6 +44,7 @@ class Article < ActionWebService::Struct
   member :dateCreated,        :time
   member :wp_slug,            :string
   member :pubDate,            :time
+  member :date_created_gmt,    :time
 end
 
 
@@ -239,8 +240,8 @@ class MetaWeblogService < ActionWebService::Base
      end
     
      #reset the pub date if it was passed in
-     if(article.pubDate)
-       dc=article.pubDate
+     if(article.date_created_gmt)
+       dc=article.date_created_gmt
        pub_date=Time.gm(dc.year,dc.month,dc.day,0,0,0,0) #don't need time here
        post.published_at=pub_date
      else
@@ -278,8 +279,9 @@ class MetaWeblogService < ActionWebService::Base
        :mt_allow_pings    => 0,
        :mt_convert_breaks => "",
        :wp_slug           => post.slug,
-       :dateCreated       => (post.published_at.utc rescue ''),
-       :pubDate           => (post.published_at.utc rescue Time.now)
+       :dateCreated       => post.published_at,
+       :date_created_gmt  => post.published_at,
+       :pubDate           => post.published_at
       )
    end
 
