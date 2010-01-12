@@ -12,7 +12,7 @@ class Blog
   end
   
   def self.url
-    "http://sudofactory.com"
+    "http://blog.wekeroad.com"
   end
   
 end
