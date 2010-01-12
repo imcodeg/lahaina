@@ -165,7 +165,7 @@ end
 
 Then /^that file should exist in public uploads$/ do
   file_path="#{RAILS_ROOT}/log/development.log"
-  expected_path="#{RAILS_ROOT}/public/uploads/development.log"
+  expected_path="#{RAILS_ROOT}/public/system/uploads/development.log"
   assert File.file?(expected_path)
 end
 

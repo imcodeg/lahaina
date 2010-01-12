@@ -100,7 +100,7 @@ class MetaWeblogService < ActionWebService::Base
        
       root_url=Rails.env=="production" ? Blog.url : "http://localhost:3000"
 
-      upload_dir="#{RAILS_ROOT}/public/uploads/"
+      upload_dir="#{RAILS_ROOT}/public/system/uploads/"
       upload_path=upload_dir+File.basename(data.name)
 
       # create the public/uploads dir if it doesn't exist
@@ -119,7 +119,7 @@ class MetaWeblogService < ActionWebService::Base
       File.chmod(0777, upload_path)
 
       #return an absolute URL to the item
-      url="#{Blog.url}/uploads/#{File.basename(data.name)}"
+      url="#{Blog.url}/system/uploads/#{File.basename(data.name)}"
       Url.new(:url=>url)
    end
 
