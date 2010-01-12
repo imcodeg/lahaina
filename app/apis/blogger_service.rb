@@ -69,6 +69,8 @@ class BloggerService < ActionWebService::Base
           raise "Can't find post with #{postid}"
         end
         true
+      else 
+        raise "Invalid user!"
       end
     end
 end
