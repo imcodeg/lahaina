@@ -213,6 +213,9 @@ class MetaWeblogService < XMLRPCService
      #some left/right
      post.title=article.title
      
+     if(!post.published_at)
+       post.published_at=Time.now
+     
      if(!article.wp_slug)
       article.wp_slug=''
      end
@@ -237,8 +240,6 @@ class MetaWeblogService < XMLRPCService
        dc=article.date_created_gmt
        pub_date=Time.gm(dc.year,dc.month,dc.day,0,0,0,0) #don't need time here
        post.published_at=pub_date
-     else
-       post.published_at=Time.now
      end
      
      if(post.published_at>Time.now)
