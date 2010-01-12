@@ -3,8 +3,8 @@
 		<a href="<%=post.url%>"
 		rel="bookmark" title="Permanent Link to <%=post.title %>!"
 		    class="title"><%=post.title %></a></h2>
-		<p style="margin-bottom:10px"> <b><%=post.pretty_date%></b> - <%=post.excerpt%></p>
-
+		<p style="margin-bottom:10px"><%=post.excerpt%></p>
+		<div class="dateline-home"><%=post.pretty_date%></div>
 		</div>
 		<div class="column span-15" style="text-align:center;margin-bottom:16px">
 		    <%=image_tag("plum_separator.png")%>
