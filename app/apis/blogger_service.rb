@@ -49,14 +49,19 @@ class BloggerService < ActionWebService::Base
     end
 
     def getUsersBlogs(appkey, username, password)
-      [BlogInfo.new(
-        :url      => Blog.url,
-        :blogid   => "1",
-        :blogName => Blog.title
-      )]
+      user=User.find_by_username_password(username,password)
+      if(user)
+          [BlogInfo.new(
+            :url      => Blog.url,
+            :blogid   => "1",
+            :blogName => Blog.title
+          )]
+      end
     end
     
     def deletePost(appkey, postid, username, password, publish)
+      user=User.find_by_username_password(username,password)
+      if(user)
         post=Post.find(postid)
         if(post)
           post.destroy
@@ -64,5 +69,6 @@ class BloggerService < ActionWebService::Base
           raise "Can't find post with #{postid}"
         end
         true
+      end
     end
 end

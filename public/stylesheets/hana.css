@@ -1,0 +1,245 @@
+﻿html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, 
+blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, 
+q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+caption, tbody, tfoot, thead, tr, th, td 
+{
+	border:0 none;
+	font-family:inherit;
+	font-size:100%;
+	font-style:inherit;
+	font-weight:inherit;
+	margin:0;
+	padding:0;
+	vertical-align:baseline;
+}
+
+body 
+{
+	margin: 30px 1.5em 0;
+	line-height: 1.5;
+	color: #222;
+	font-family: "Georgia","Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	font-size: 0.9em;
+}
+
+h1, h2, h3, h4, h5, h6 
+{
+	font-weight: normal;
+	color: #111;
+	font-family: Georgia;
+}
+
+h2 {
+	font-size: 2em;
+	margin-bottom: 0.75em;
+}
+
+h3 {
+	font-size: 1.5em;
+	line-height: 1;
+	margin-bottom: 1em;
+}
+
+h6 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+a 
+{
+	color: #FF3706;
+	text-decoration: none;
+}
+
+a:active, h2 a:active, h3 a:active
+{
+	color: #8c1b00;
+	text-decoration: none;
+}
+
+a:hover, h2 a:hover, h3 a:hover
+{
+	color: #464646;
+	text-decoration: none;
+}
+
+a img 
+{
+	border:medium none;
+}
+
+h2 a {
+	color: #3B4A25;
+	text-decoration: none;
+}
+
+p
+{
+	margin: 0 0 1.5em 0;
+	line-height: 1.6;
+}
+
+ul, ol 
+{
+	list-style-type: none;
+	margin: 0 1.5em 1.5em 1em;
+	padding: 0;
+}
+
+ul li 
+{
+	background-repeat: no-repeat;
+	border-top: 1px dotted #E5E5E5;
+	line-height: 2em;
+	list-style-image: url(/content/images/icons/li.png);
+	margin:0 0 0 1em;
+	padding:0;
+}
+
+ul li a 
+{
+	color:#666666;
+}
+
+div.clear
+{
+	clear: both;
+}
+
+div.container 
+{
+	margin:0 auto;
+	width:950px;
+}
+
+div#elhead
+{
+	width:950px;
+	float:left;
+}
+
+#elhead div, #ribbon div
+{
+	float: left;
+	width: 230px;
+	margin-right: 10px;
+}
+
+div#owner
+{
+	padding: 68px 0 0 42px;
+}
+
+div#logo
+{
+	width: 390px;
+	text-align: center;
+}
+
+div#subscriptions
+{
+	text-align: right;
+	padding-top: 60px;
+}
+
+div#ribbon 
+{
+	margin: 0 0 22px 0;
+	width: 950px;
+	float: left;
+	border-top: 3px double #E5E5E5;
+	border-bottom: 3px double #E5E5E5;
+	font-size: 0.8em;
+	font-variant: small-caps;
+	font-weight: 500;
+	height: 22px;
+	letter-spacing: 0.2em;
+}
+
+div#volume
+{
+	width: 270px;
+}
+
+div#issue
+{
+	width: 390px;
+	text-align: center;
+}
+
+div#stats
+{
+	float: right;
+	margin-right: 0;
+}
+
+div#feature, div#sidebar
+{
+	float: left;
+}
+
+div#feature
+{
+	border-right:1px solid #EEE;
+	margin-right:25px;
+	padding-right:24px;
+	width: 590px;
+}
+
+div#sidebar
+{
+	width: 310px;
+	margin-right: 0;
+	margin-bottom: 16px;
+	padding: 0;
+}
+
+hr
+{
+	border:medium none;
+	clear:both;
+	color:#DDD;
+	float:none;
+	height:0.1em;
+	margin:0 0 1.4em;
+	width:100%;
+	background:#CCC none repeat scroll 0 0;
+	height:1px;
+}
+
+div#subsonic, div#opinions, div#favorites
+{
+	float: left;
+	width: 270px;
+}
+
+div#subsonic, div#opinions
+{
+	border-right: 1px solid #EEE;
+	margin-right: 25px;
+	padding-right: 24px;
+}
+
+.five_posts h6 a, .five_posts h4 a, .five_posts h3 a 
+{
+	color: #000;
+	margin-bottom: 0;
+	text-decoration: none;
+}
+
+p.byline 
+{
+	color: #CCC;
+	font-size: 0.8em;
+	line-height: 1.875em;
+}
+
+div#footer 
+{
+	border-top: 1px solid #E5E5E5;
+	color: #CCC;
+	font-size: 0.8em;
+	margin: 0;
+	padding-top: 16px;
+	text-align: center;
+}
