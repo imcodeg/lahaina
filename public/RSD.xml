@@ -4,7 +4,7 @@
         <engineLink>http://github.com/robconery/hana.git</engineLink>
         <homePageLink>http://blog.wekeroad.com/</homePageLink>
         <apis>
-            <api name="MetaWeblog" preferred="true" apiLink="http://localhost:3000/xmlrpc/api" blogID="1" />
+            <api name="MetaWeblog" preferred="true" apiLink="http://blog.wekeroad.com/xmlrpc/api" blogID="1" />
         </apis>
     </service>
 </rsd>
