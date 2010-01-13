@@ -61,8 +61,7 @@ def bind_post_to_article(post,article)
   post.is_published=true
   post.post_id=article.postid
 end
-  
-end
+
 
 desc "Import posts from live blog using XMLRPC" 
 task :import_posts => :environment do
