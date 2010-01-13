@@ -184,7 +184,7 @@ class MetaWeblogService < XMLRPCService
         raise "Can't save new post...#{post.inspect}"
       end
       assign_categories(article,post)
-      "#{Blog.url}#{post.url}"   
+      Url.new(:url=>"#{Blog.url}#{post.url}") 
    end
    
    def assign_categories(article, post)
@@ -246,7 +246,7 @@ class MetaWeblogService < XMLRPCService
      if(post.published_at>Time.now)
        post.is_published=false
      end
-
+     
      #set the slug
      if(article.wp_slug!='')
        post.slug=article.wp_slug.downcase

@@ -1,7 +1,7 @@
 class Post 
   include MongoMapper::Document
   
-  key   :slug, String, :unique=>true
+  key   :slug, String, :unique=>true, :index =>true
   key   :title, String, :required=> true
   key   :published_at, Time
   key   :excerpt, String
@@ -31,10 +31,10 @@ class Post
   def create_slug(str)
     #a slug is a URL-safe string that echoes the title
     #in this method we want to remove any weird punctuation and spaces
-    str = str.gsub(/[^a-zA-Z0-9 ]/,"")
+    str = str.gsub(/[^a-zA-Z0-9 ]/,"").downcase
     str = str.gsub(/[ ]+/," ")
     str = str.gsub(/ /,"-")
-    str.downcase
+    
     str
   end
   def year
